@@ -1,0 +1,89 @@
+body{
+    width: 90%;
+    margin: auto;
+}
+
+span{
+    margin: 0px 10px;
+}
+
+hr.solid {
+    border-top: 1px solid #bbb;
+}
+
+.header-container{
+    display:flex;
+    background-color:#ff661d;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.header-root{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+}
+td{
+    text-align: center;
+    padding: 2px;
+}
+
+th{
+   background-color: #ff661d;
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(even){
+    background-color: #e2e2e2;
+}
+tr:nth-child(odd){
+    background-color: #eeedec;
+}
+
+#app {
+    padding: 20px;
+    font-family: robot, arial
+}
+svg {
+    fill: #000;
+    fill-opacity: 0.3;
+}
+
+path {
+    stroke: steelblue;
+    stroke-width: 2px;
+    fill: none;
+}
+
+.axis {
+    stroke: #000;
+}
+
+.axis-labels text {
+    fill: #000;
+    fill-opacity: 0.9;
+    font-size: 12px;
+    text-anchor: middle;
+}
+
+.gridline {
+    opacity: 0.2;
+}
+
+.page-button{
+    color: #ff661d;
+    border: none;
+    text-transform: capitalize;
+    background-color: transparent;
+}
+
+.button-container{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    margin-right: 6%;
+    margin-top: 2%;
+}
+
+
