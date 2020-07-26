@@ -27,7 +27,7 @@ function fetchApps(page) {
   console.log("in fetchapps , pagenumber ",page)
   return dispatch => {
     dispatch(requestApps())
-    return fetch("http://hn.algolia.com/api/v1/search?page="+page)
+    return fetch("https://hn.algolia.com/api/v1/search?page="+page)
       .then(response => response.json())
       .then(json => dispatch(receiveApps(json.hits, json.page)))
   }

@@ -6,7 +6,7 @@ export class LineChart extends React.Component {
 
         let {data=[]} = this.props;
 
-        const width = 1000, height = 600;
+        const width = 700, height = 600;
 
         let marginLeft = 60, marginRight=30, marginBottom=30, marginTop=10;
 
