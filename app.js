@@ -27,10 +27,3 @@ app.get('/', (req, res) => {
           }
       })
 });
-
-// Pure client side rendered page
-// app.get('/client', (req, res) => {
-//   let response = template('Client Side Rendered page')
-//   res.setHeader('Cache-Control', 'assets, max-age=604800')
-//   res.send(response)
-// });

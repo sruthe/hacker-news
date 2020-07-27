@@ -7,9 +7,16 @@ class Footer extends Component {
 
     constructor(props){
         super(props);
+        this.state={
+            changed: false
+        }
     }
 
-     getNextPage = () =>{
+    componentWillReceiveProps(nextProps, nextContext) {
+        this.setState({changed: !this.state.changed})
+    }
+
+    getNextPage = () =>{
          let { hits, dispatch, pageNumber } = this.props;
         dispatch(getPageData(pageNumber+1))
     };

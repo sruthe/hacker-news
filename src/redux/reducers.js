@@ -21,13 +21,14 @@ function hits( state = {isFetching: false, hits: []}, action) {
         pageNumber: state.pageNumber
       });
     case HIDE:
-      let temp=state.hits;
+      let temp=[...state.hits];
       temp.splice(action.index,1);
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isFetching: false,
         hits: temp,
         pageNumber: state.pageNumber
-      });
+      };
     default:
       return state
   }
