@@ -13,7 +13,7 @@ function hits( state = {isFetching: false, hits: []}, action) {
         pageNumber: action.pageNumber
       });
     case UPVOTE:
-      let hit=state.hits;
+      let hit=[...state.hits];
       hit[action.index]["points"]=hit[action.index]["points"]+1;
       return Object.assign({}, state, {
         isFetching: false,
