@@ -1,4 +1,4 @@
-import {REQUEST_APPS, RECEIVE_APPS, UPVOTE} from './actions';
+import {REQUEST_APPS, RECEIVE_APPS, UPVOTE, HIDE} from './actions';
 
 function hits( state = {isFetching: false, hits: []}, action) {
   switch (action.type) {
@@ -18,6 +18,14 @@ function hits( state = {isFetching: false, hits: []}, action) {
       return Object.assign({}, state, {
         isFetching: false,
         hits: hit,
+        pageNumber: state.pageNumber
+      });
+    case HIDE:
+      let temp=state.hits;
+      temp.splice(action.index,1);
+      return Object.assign({}, state, {
+        isFetching: false,
+        hits: temp,
         pageNumber: state.pageNumber
       });
     default:

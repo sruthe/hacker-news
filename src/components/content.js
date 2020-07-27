@@ -1,20 +1,24 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
-import {upvote} from "../redux/actions";
+import {hide, upvote} from "../redux/actions";
+import {useState} from "react";
 
 function Content(props) {
 
-    let {hits:data=[], dispatch } = props
+    let {hits:data=[], dispatch } = props;
+    let [updated, setUpdated] = useState(false);
 
     // console.log("content");
     // console.log(data);
 
-    useEffect(()=>{
-
-    },[props.hits])
-
     function vote(index) {
+        setUpdated((prevState)=>!prevState);
         dispatch(upvote(index))
+    }
+
+    function hideRow(index) {
+        setUpdated((prevState)=>!prevState);
+        dispatch(hide(index));
     }
 
     return(
@@ -42,7 +46,7 @@ function Content(props) {
                                 <span>{hit.title}</span>
                                 <a href={hit.url}>({formattedURL})</a>
                                 <span> by {hit.author} </span>
-                                <span> [hide]</span>
+                                <span onClick={()=>{hideRow(index)}}> [hide]</span>
                             </td>
                         </tr>
                     );

@@ -1,6 +1,8 @@
 export const REQUEST_APPS = 'REQUEST_APPS'
 export const RECEIVE_APPS = 'RECEIVE_APPS'
 export const UPVOTE = 'UPVOTE'
+export const HIDE = 'HIDE'
+
 
 function requestApps() {
   return {
@@ -19,6 +21,13 @@ function receiveApps(json, page) {
 function upvoteIndex(index) {
   return {
     type: UPVOTE,
+    index: index
+  }
+}
+
+function hideIndex(index) {
+  return {
+    type: HIDE,
     index: index
   }
 }
@@ -62,4 +71,10 @@ export function upvote(index) {
   return (dispatch) => {
       return dispatch(upvoteIndex(index))
     }
+}
+
+export function hide(index) {
+  return (dispatch) => {
+    return dispatch(hideIndex(index))
+  }
 }
