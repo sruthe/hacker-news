@@ -29,7 +29,7 @@ function Content(props) {
 
     return(
         <>
-            <table>
+            <table style={{minWidth:'95%'}}>
                 <tr>
                 <th>Comments</th>
                     <th>Vote Count</th>

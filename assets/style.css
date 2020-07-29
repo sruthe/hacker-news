@@ -11,6 +11,11 @@ hr.solid {
     border-top: 1px solid #bbb;
 }
 
+button:focus {
+    outline:0;
+    background-color: #a92b2b1f
+}
+
 .header-container{
     display:flex;
     background-color:#ff661d;

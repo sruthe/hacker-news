@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import {LineChart} from "./linechart";
+// import {LineChart} from "./linechart";
 import {connect} from "react-redux";
+import TimeLine from "./timeline";
 
 
 class Footer extends Component {
@@ -40,7 +41,7 @@ class Footer extends Component {
                     <button className={"page-button"} onClick={this.getNextPage}> next</button>
                 </div>
                 <hr className="solid"/>
-                <LineChart data={hits}/>
+                <TimeLine data={hits}/>
                 <hr className="solid"/>
                 <p>Guidelines | FAQ | Support | API | Security | Lists | Bookmarklet | Legal | Apply to YC | Contact</p>
             </>
