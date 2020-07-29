@@ -1,15 +1,21 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
-import {hide, upvote} from "../redux/actions";
+import {hide, upvote, receiveApps} from "../redux/actions";
 import {useState} from "react";
 
 function Content(props) {
 
-    let {hits:data=[], dispatch } = props;
+    let {hits:data=[], pageNumber, dispatch } = props;
     let [updated, setUpdated] = useState(false);
 
-    // console.log("content");
-    // console.log(data);
+    useEffect(()=>{
+        let res=typeof window!=="undefined"?sessionStorage.getItem("page"+pageNumber):"{}";
+        if(res!==null && res!=="{}"){
+            let d=JSON.parse(res)
+            dispatch(receiveApps(d.hits, d.pageNumber))
+        }
+    },[updated])
+
 
     function vote(index) {
         setUpdated((prevState)=>!prevState);
@@ -57,7 +63,8 @@ function Content(props) {
     );
 }
 
-function mapStateToProps({ isFetching, hits, pageNumber }) {
+function mapStateToProps(state) {
+    let { isFetching, hits, pageNumber }=state;
     return {
         isFetching,
         hits,

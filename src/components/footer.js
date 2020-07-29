@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {LineChart} from "./linechart";
-import {fetchAppsIfNeeded, getPageData} from "../redux/actions";
 import {connect} from "react-redux";
+
 
 class Footer extends Component {
 
@@ -18,13 +18,16 @@ class Footer extends Component {
 
     getNextPage = () =>{
          let { hits, dispatch, pageNumber } = this.props;
-        dispatch(getPageData(pageNumber+1))
+        let page= parseInt(pageNumber)+1;
+        window.location.href = '/?page='+page;
     };
 
     getPrevPage = () =>{
         let { hits, dispatch, pageNumber } = this.props;
         if(pageNumber>1)
-            dispatch(getPageData(pageNumber-1))
+        {
+            window.location.href = '/?page='+(pageNumber-1)
+        }
     };
 
     render()

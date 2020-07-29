@@ -16,14 +16,21 @@ app.listen(process.env.PORT || 4000);
 
 // server rendered home page
 app.get('/', (req, res) => {
-  axios.get("https://hn.algolia.com/api/v1/search?page=1")
-      .then((resp)=>{
-          if(resp.status===200){
-              const { preloadedState, content}  = ssr({hits:resp.data.hits, isFetching: false, pageNumber:1});
-              // console.log(resp.data.hits);
-              const response = template("Hacker News", preloadedState, content);
-              res.setHeader('Cache-Control', 'assets, max-age=604800');
-              res.send(response);
-          }
-      })
+    let page= req.query.page;
+    if(page === undefined)
+    {
+        page = 1;
+        res.redirect('/?'+'page='+page);
+    }
+    else {
+        axios.get("https://hn.algolia.com/api/v1/search?page=" + page)
+            .then((resp) => {
+                if (resp.status === 200) {
+                    const {preloadedState, content} = ssr({hits: resp.data.hits, isFetching: false, pageNumber: page});
+                    const response = template("Hacker News", preloadedState, content);
+                    res.setHeader('Cache-Control', 'assets, max-age=604800');
+                    res.send(response);
+                }
+            })
+    }
 });

@@ -10,7 +10,7 @@ function requestApps() {
   }
 }
 
-function receiveApps(json, page) {
+export function receiveApps(json, page) {
   return {
     type: RECEIVE_APPS,
     hits: json,
